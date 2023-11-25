@@ -1,11 +1,32 @@
-import * as http from "http";
+// import * as http from "http";
+import express from "express";
+import bodyParser from "body-parser";
+// import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
+
+import { usersRouter } from "./routes/users.route.js";
+
+dotenv.config();
+
+
 const hostname = "127.0.0.1";
 const port = 5000;
-const server = http.createServer((_req, res) => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "text/plain");
-    res.end("Hello, World!\n");
+
+const app = express();
+
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(cors());
+
+app.use("/", usersRouter);
+
+app.get("/", async (req, res) => {
+  res.send("Hello World!");
+  // const languages = await getLanguages();
+  // res.send(languages);
 });
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
