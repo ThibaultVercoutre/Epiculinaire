@@ -1,8 +1,8 @@
 import { model, Schema, Model, Types } from "mongoose";
 
-const UserSchema: Schema = new Schema(
+const PersonnelSchema: Schema = new Schema(
   {
-    id_user: {
+    id_personnel: {
         type: Number,
         required: true,
     },
@@ -10,20 +10,20 @@ const UserSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    password: {
+    type: {
         type: String,
         required: true,
     },
   }
 );
 
-export interface IIUser {
+export interface IIPersonnel {
     _id: Types.ObjectId;
     id_user: number;
     name: string;
-    password: string;
+    type: string;
 }
 
-export interface IUser extends Omit<IIUser, "_id">, Document {}
+export interface IPersonnel extends Omit<IIPersonnel, "_id">, Document {}
 
-export const User = model<IUser, Model<IUser>>("User", UserSchema, "users");
+export const Personnel = model<IPersonnel, Model<IPersonnel>>("Personnel", PersonnelSchema, "personnel");
