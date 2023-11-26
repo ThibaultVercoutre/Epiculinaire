@@ -25,12 +25,12 @@ Contenant :
  - place y dans la pièce (pour le plan interactif) (float)
 
 
-### <span style="text-decoration: underline green;">4 - Une table stocke (Carottes, steak, pommes de terre, etc.)</span>
+### <span style="text-decoration: underline green;">4 - Une table stock (Carottes, steak, pommes de terre, etc.)</span>
 
 Contenant
  - id (int auto-increment primary-key)
  - nom ingrédient (string)
- - type (liquide, solide, etc. pour determiné unité quantité)
+ - type (liquide, solide, unité, etc. pour determiner unité quantité) (bool)
  - quantité (int)
 
 
