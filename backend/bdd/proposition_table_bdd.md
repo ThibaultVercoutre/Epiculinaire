@@ -49,6 +49,7 @@ Contenant :
  - id (int auto-increment primary-key)
  - nombre personnes (int)
  - id table(table réservé automatique) (int)
+ - nom (string)
  - date (date)
 
 
@@ -58,6 +59,7 @@ Contenant :
  - id (int auto-increment primary-key)
  - id plat (int)
  - id reservation (int)
+ - heure (date)
  - etat (en attente, reçu -> bool)
 
 
@@ -66,6 +68,7 @@ Contenant :
 Contenant :
  - id (int auto-increment primary-key)
  - nom (string)
+ - id specialite (int)
  - prix (float)
  - id type (entrée, plat, dessert, boisson, etc.) (int)
 
@@ -86,8 +89,76 @@ Contenant :
  - quantité (int)
 
 
-### <span style="text-decoration: underline green;">6 - Une table mission ()</span>
+### <span style="text-decoration: underline green;">11 - Une table mission ()</span>
 
 Contenant :
  - id (int auto-increment primary-key)
  - nom (servir, nettoyer)
+
+
+### <span style="text-decoration: underline green;">12 - Une table plat en préparation (salade césar en préparation, etc.)</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - id plat (int)
+ - id ingrédient (int)
+ - id serveur (int)
+ - id reservation (int)
+ - etat (en préparation, prêt, envoyé en salle -> int)
+
+
+### <span style="text-decoration: underline green;">13 - Une table caisse</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - id reservation (int)
+ - montant virement (float)
+ - type (virement / espèce) (bool)
+ - date (date)
+
+
+### <span style="text-decoration: underline green;">14 - Une table specialité</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - nom (string)
+
+
+### <span style="text-decoration: underline green;">15 - Une table specialité cuisinier/span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - id cuisinier (int)
+ - id specialité (int)
+
+
+### <span style="text-decoration: underline green;">16 - Une table Questions</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - question (string)
+
+
+### <span style="text-decoration: underline green;">17 - Une table Réponses</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - id question (int)
+ - réponse (string)
+
+
+### <span style="text-decoration: underline green;">18 - Une table questions aliment</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - id question (int)
+ - id aliment (int)
+
+
+### <span style="text-decoration: underline green;">19 - Une table horaire ouverture</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - jour (int)
+ - heure ouverture (date)
+ - heure fermeture (date)
