@@ -50,6 +50,7 @@ Contenant :
  - nombre personnes (int)
  - id table(table réservé automatique) (int)
  - nom (string)
+ - mail (string)
  - date (date)
 
 
@@ -60,7 +61,7 @@ Contenant :
  - id plat (int)
  - id reservation (int)
  - heure (date)
- - etat (en attente, reçu -> bool)
+ - etat (en attente, reçu, fini)
 
 
 ### <span style="text-decoration: underline green;">8 - Une table plat (salade césar, steak frite, entrecôte, etc.)</span>

@@ -8,7 +8,7 @@ Récuperer le nombre de place, la position x et y et la rotation de chaque table
 
 ### <span style="text-decoration: underline;"> GET /tablesdetails :</span>
 
-Récuperer le nombre de place, la position x et y, la rotation de chaque table, les plats commandés, s'il le plat à été commandé ou pas et moment du repas.
+Récuperer le nombre de place, la position x et y, la rotation de chaque table, les plats commandés, si le plat à été commandé ou pas et moment du repas.
 
 ### <span style="text-decoration: underline;"> GET /tablesdetails/:id :</span>
 

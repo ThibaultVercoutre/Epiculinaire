@@ -1,7 +1,7 @@
 import { connexion } from "../../bdd/connect.js";
 import { Personnel } from "../models/personnel.model.js";
 
-export async function getUsers() {
+export async function getPersonnels() {
     try{
         const db = await connexion();
         console.log("db", db);

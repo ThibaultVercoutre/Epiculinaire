@@ -7,6 +7,7 @@ import cors from "cors";
 
 import { usersRouter } from "./routes/users.route.js";
 import { personnelRouter } from "./routes/personnel.route.js";
+import { tableRouter} from "./routes/table.route.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(cors());
 
 app.use("/", usersRouter);
 app.use("/", personnelRouter);
+app.use("/", tableRouter);
 
 app.get("/", async (req, res) => {
   res.send("Hello World!");
