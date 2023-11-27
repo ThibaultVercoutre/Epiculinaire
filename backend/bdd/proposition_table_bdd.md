@@ -86,7 +86,7 @@ Contenant :
  - quantité (int)
 
 
-### <span style="text-decoration: underline green;">6 - Une table mission ()</span> 
+### <span style="text-decoration: underline green;">6 - Une table mission ()</span>
 
 Contenant :
  - id (int auto-increment primary-key)
