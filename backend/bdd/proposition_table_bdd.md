@@ -84,3 +84,10 @@ Contenant :
  - id plat (int)
  - id ingrédient (int)
  - quantité (int)
+
+
+### <span style="text-decoration: underline green;">6 - Une table mission ()</span>
+
+Contenant :
+ - id (int auto-increment primary-key)
+ - nom (servir, nettoyer)
