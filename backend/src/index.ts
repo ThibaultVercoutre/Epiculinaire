@@ -8,6 +8,8 @@ import cors from "cors";
 import { usersRouter } from "./routes/users.route.js";
 import { personnelRouter } from "./routes/personnel.route.js";
 import { tableRouter} from "./routes/table.route.js";
+import { stockRouter} from "./routes/stock.route.js";
+import { serveurRouter } from "./routes/serveur.route.js";
 
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.use(cors());
 app.use("/", usersRouter);
 app.use("/", personnelRouter);
 app.use("/", tableRouter);
+app.use("/", stockRouter);
+app.use("/", serveurRouter);
 
 app.get("/", async (req, res) => {
   res.send("Hello World!");
