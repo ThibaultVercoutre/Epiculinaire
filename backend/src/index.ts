@@ -10,6 +10,11 @@ import { personnelRouter } from "./routes/personnel.route.js";
 import { tableRouter} from "./routes/table.route.js";
 import { stockRouter} from "./routes/stock.route.js";
 import { serveurRouter } from "./routes/serveur.route.js";
+import { platRouter } from "./routes/plat.route.js";
+import { reservationRouter } from "./routes/reservation.route.js";
+import { alimentRouter } from "./routes/aliment.route.js";
+import { questionRouter } from "./routes/question.route.js";
+import { reponseRouter } from "./routes/reponse.route.js";
 
 dotenv.config();
 
@@ -28,6 +33,11 @@ app.use("/", personnelRouter);
 app.use("/", tableRouter);
 app.use("/", stockRouter);
 app.use("/", serveurRouter);
+app.use("/", platRouter);
+app.use("/", reservationRouter);
+app.use("/", alimentRouter);
+app.use("/", questionRouter);
+app.use("/", reponseRouter);
 
 app.get("/", async (req, res) => {
   res.send("Hello World!");
