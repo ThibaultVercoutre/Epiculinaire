@@ -56,7 +56,7 @@ export async function getTablesDetails() {
                         SELECT r.id_table as id_table, c.id as id_commande, c.heure, c.etat
                         FROM table_resto t
                         LEFT JOIN reservation r ON t.id = r.id_table
-                        LEFT JOIN commande c ON t.id = c.id_reservation
+                        LEFT JOIN commande c ON r.id = c.id_reservation
                     `;
                     db.all(sql2, [], (err, rows) => {
                         if (err) {
@@ -70,7 +70,7 @@ export async function getTablesDetails() {
                                     etat: row.etat as number,
                                 });
                                 tables.forEach((table: ITableCommande) => {
-                                    if (table.id == row.id_table) { // Fixed the property name here
+                                    if (table.id == row.id_table) {
                                         table.commandes.push(commande);
                                     }
                                     for(var i = 0; i < tables.length; i++) {
@@ -196,6 +196,29 @@ export async function getTablesCommande() {
         return new Promise((resolve, reject) => {
             const sql = "SELECT * FROM table_resto WHERE id = ?"
             db.all(sql, [], (err, rows) => {
+                if (err) {
+                    db.close();
+                    reject(err);
+                } else {
+                    const users = rows.map(row => new Table(row));
+                    db.close();
+                    resolve(users);
+                }
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
+
+export async function updateTable(id: number, x: number, y: number, rotation: number) {
+    try{
+        const db = await connexion();
+
+        return new Promise((resolve, reject) => {
+            const sql = "UPDATE table_resto SET x = ?, y = ?, rotation = ? WHERE id = ?";
+            db.all(sql, [x, y, rotation, id], (err, rows) => {
                 if (err) {
                     db.close();
                     reject(err);

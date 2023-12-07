@@ -20,3 +20,9 @@ export const getTablesAvancement = async (req: any, res: any) => {
     const personnel = await TableService.getTablesAvancement();
     return res.status(200).json(personnel);
 }
+
+export const updateTable = async (req: any, res: any) => {
+    const { id, x, y, rotation } = req.params;
+    const users = await TableService.updateTable(id, x, y, rotation);
+    return res.status(200).json(users);
+}

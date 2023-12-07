@@ -10,3 +10,5 @@ tableRouter.get('/tablesdetails', TableController.getTablesDetails);
 tableRouter.get('/tablesdetails/:id', TableController.getTablesDetailsId);
 
 tableRouter.get('/tablesavancement', TableController.getTablesAvancement);
+
+tableRouter.post('/tableupdate/:id/:x/:y/:rotation', TableController.updateTable);
