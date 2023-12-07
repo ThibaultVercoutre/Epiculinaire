@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    
+  }
+
+  .Reservation-link {
+    margin-right: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .Menu-link {
+    margin-right: 2px;
+    font-weight: bold; 
+    text-transform: uppercase; 
+  }
+  .Avis-link {
+    margin-right: 2px;
+    font-weight: bold; 
+    text-transform: uppercase; 
+  }
+  .Gestion-link {
+    margin-right: 2px;
+    font-weight: bold; 
+    text-transform: uppercase; 
+  }
+
+.centered-container {
+    text-align: center;
+    /* background-color: rgba(46, 17, 11, 0.9); */
+    font-size: 30px;
+    font-weight: bold;
+    border: 20px solid rgba(46, 17, 11, 0.0); /* Updated border with opacity */
+    display: flex;
+}
+
+.centered-container .child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-container .child .text{
+  padding: 30px 10px;
+  background-color: rgba(46, 17, 11, 0.9);
+  color: #fff;
+}
+
+.image_div{
+    width: 336px;
+    height: 230px;
+    padding: 20px;
+    background-color: rgba(46, 17, 11, 0.9);
+}
+
+.image-plats {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/plats_luxe.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    /* border: 20px solid rgba(46, 17, 11, 0.9); */
+}
+
+.ribbon label {
+    display: flex;
+    margin-bottom: 60px; /* Espacement entre chaque boutton, ajustez selon vos besoins */
+    padding: 20px;
+    border: 20px solid #2e110b; /* Couleur de la bordure */
+    border-radius: 20px; /* Coins arrondis */
+    text-decoration: none;
+    color: #eee; /* Couleur du texte */
+    font-weight: bold;
+    background-color: #2e110b;
+  }
+  .ribbon label input {
+    margin-right: 20px;
+  }
