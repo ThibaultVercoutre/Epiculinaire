@@ -2,23 +2,23 @@ html {
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     height: 100%;
-  }
+}
   
-  body {
+body {
     margin: 0;
     padding: 0;
     background-image: url('../images/img.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white; 
     height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-  }  
+}  
 
-  span.cuisinier {
+span.cuisinier {
     background-image: url('../images/toque.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -26,25 +26,23 @@ html {
     height: 40px;
     margin-right: 10px;
     margin-left: 10px;
-  }
+}
   
-  div.perfecto {
+div.perfecto {
     background-image: url('../images/perfecto.png');
     background-size: contain;
     background-repeat: no-repeat;
     width: 250px;
     height: 300px;
     margin :10px;
-  }
+}
   
-  .content{
-  
+.content{  
     display: flex;
     flex-direction: column;
     align-items: center;
     margin :10px;
-  
-  }
+}
   
   main{
     flex: 1;

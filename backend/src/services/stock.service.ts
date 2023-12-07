@@ -7,7 +7,7 @@ export async function getStock() {
         console.log("db", db);
 
         return new Promise((resolve, reject) => {
-            const sql = `SELECT stock.id as id, type_ingredient.type as type, stock.quantity as quantity
+            const sql = `SELECT stock.id as id, stock.name as name, type_ingredient.type as type, stock.quantity as quantity
                          FROM stock
                          INNER JOIN type_ingredient ON stock.type = type_ingredient.id`;
             db.all(sql, [], (err, rows) => {

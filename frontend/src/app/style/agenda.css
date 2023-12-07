@@ -1,0 +1,33 @@
+.agenda{
+    display: flex;
+}
+
+.select_time{
+    background-color: #2e110b;
+}
+
+.cases{
+    flex: 1;
+    background-color: #2e110ba1;
+}
+
+.cases table tr td {
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.day{
+    background-color: rgba(189, 173, 152, 0.61);
+    cursor: pointer;
+    transition-duration: 0.1s;
+    padding: 10px;
+}
+
+.day:hover:not(.selected) {
+    background-color: #e0a017;
+}
+  
+.selected {
+    background-color: #9F833B;
+}

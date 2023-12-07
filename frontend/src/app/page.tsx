@@ -23,7 +23,8 @@ export default function Home() {
   const [user, setUser] = useState<UserType | null>(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const user = window.localStorage.getItem("user");
-      return user ? JSON.parse(user) : null;;
+      setIsConnected(user ? true : false);
+      return user ? JSON.parse(user) : null;
     }
     return null;
   });
