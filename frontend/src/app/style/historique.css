@@ -1,0 +1,72 @@
+.commandes{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    margin :10px
+}
+
+.commandes .tableau{
+    margin: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.commandes .comptes{
+    margin: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.commandes th{
+    border-radius: 20px;  
+    background-color: #9F833B;
+    padding: 5px;
+}
+
+.commandes tr{
+    border-radius: 20px;  
+    background-color: rgba(189, 173, 152, 0.8);
+    padding: 5px;
+}
+
+.commandes tr:nth-child(odd){
+    background-color: rgba(132, 118, 101, 0.8);   
+}
+
+.commandes tr td{
+    font-weight: bold;
+    padding: 20px; 
+    margin-top: 20px;
+    margin-left: 100px; 
+    margin-right: 100px;
+    transition-duration: 0.1s;
+}
+
+.commandes tr td:first-child{
+    border-radius: 20px 0px 0px 20px;  
+}
+
+.commandes tr td:last-child{
+    border-radius: 0px 20px 20px 0px;  
+}
+
+.commandes tbody tr td{
+    cursor: pointer;
+}
+
+.commandes tbody tr:hover td{
+    background-color: #9F833B;
+}
+
+.commandes thead tr td{
+    background-color: rgba(46, 17, 11, 0.9);  
+    cursor: default;
+}
+
+.reservation:hover:not(.selected) {
+    background-color: #9F833B;
+}
+  
+.selected {
+    background-color: #2e110ba1;
+}

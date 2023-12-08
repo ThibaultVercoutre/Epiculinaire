@@ -15,6 +15,7 @@ import { reservationRouter } from "./routes/reservation.route.js";
 import { alimentRouter } from "./routes/aliment.route.js";
 import { questionRouter } from "./routes/question.route.js";
 import { reponseRouter } from "./routes/reponse.route.js";
+import { financeRouter } from "./routes/finance.route.js";
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.use("/", reservationRouter);
 app.use("/", alimentRouter);
 app.use("/", questionRouter);
 app.use("/", reponseRouter);
+app.use("/", financeRouter);
 
 app.get("/", async (req, res) => {
   res.send("Hello World!");

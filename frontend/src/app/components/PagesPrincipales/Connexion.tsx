@@ -25,7 +25,6 @@ export const Connexion = ({user, setUser}: ConnexionProps) => {
         const dataUser = await fetchedUser();
         if(dataUser.length != 0) {
             setUser(dataUser[0]);
-            console.log(dataUser[0]);
         }
     }
 

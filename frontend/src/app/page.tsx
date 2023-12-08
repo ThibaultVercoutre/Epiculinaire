@@ -20,13 +20,16 @@ export default function Home() {
 
   const [isConnected, setIsConnected] = useState(false);
 
-  const [user, setUser] = useState<UserType | null>(() => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      const user = window.localStorage.getItem("user");
-      return user ? JSON.parse(user) : null;;
-    }
-    return null;
-  });
+  // const [user, setUser] = useState<UserType | null>(() => {
+  //   if (typeof window !== "undefined" && window.localStorage) {
+  //     const user = window.localStorage.getItem("user");
+  //     setIsConnected(user ? true : false);
+  //     return user ? JSON.parse(user) : null;
+  //   }
+  //   return null;
+  // });
+
+  const [user, setUser] = useState<UserType | null>(null);
 
   useEffect(() => {
     if (user) {

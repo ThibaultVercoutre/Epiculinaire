@@ -1,23 +1,22 @@
 import { connexion } from "../../bdd/connect.js";
-import { Stock } from "../models/stock.model.js";
+import { Finance } from "../models/finance.model.js";
 
-export async function getStock() {
+export async function getFinances() {
     try{
         const db = await connexion();
         console.log("db", db);
 
         return new Promise((resolve, reject) => {
-            const sql = `SELECT stock.id as id, stock.name as name, type_ingredient.type as type, stock.quantity as quantity
-                         FROM stock
-                         INNER JOIN type_ingredient ON stock.type = type_ingredient.id`;
+            const sql = `SELECT *
+                         FROM caisse`;
             db.all(sql, [], (err, rows) => {
                 if (err) {
                     db.close();
                     reject(err);
                 } else {
-                    const sotck = rows.map(row => new Stock(row));
+                    const finance = rows.map(row => new Finance(row));
                     db.close();
-                    resolve(sotck);
+                    resolve(finance);
                 }
             });
         });
@@ -26,5 +25,3 @@ export async function getStock() {
         throw err;
     }
 }
-
-// faire la commande post

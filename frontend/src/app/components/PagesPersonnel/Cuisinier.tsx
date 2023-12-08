@@ -14,7 +14,7 @@ interface CuisinierProps {
 export const Cuisinier = ({user, setUser}: CuisinierProps) => {
   return (    
     <>
-        <Header user = {user} setUser={setUser}/>
+        <Header user = {user} setUser={setUser} title='Cuisinier'/>
 
         <main>
             <div className="content">

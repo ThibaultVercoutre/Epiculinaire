@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 import { User as UserType } from "../../../types/User";
 
 interface HeaderBarProps {
+    title: string;
     user: UserType | null;
     setUser: (user: UserType | null) => void;
 }
 
-export const Header = ({ user, setUser }: HeaderBarProps) => {
+export const Header = ({ title, user, setUser }: HeaderBarProps) => {
 
     const deconnexion = () => {
         localStorage.removeItem("user");
@@ -20,7 +21,7 @@ export const Header = ({ user, setUser }: HeaderBarProps) => {
     return (
         <div className="ribbon-container">
             <div className="logo"> </div>
-            <div className="message"><div><span className={user?.name}/> Espace {user?.name} <span className={user?.name}/></div></div>
+            <div className="message"><div><span className={user?.name}/> Espace {title} <span className={user?.name}/></div></div>
             <div onClick={deconnexion} className="deconnexion">Deconnexion</div>
         </div>
     );

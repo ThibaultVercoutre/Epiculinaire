@@ -14,7 +14,7 @@ interface ServeurProps {
 export const Serveur = ({user, setUser}: ServeurProps) => {
   return (    
     <>
-        <Header user={user} setUser={setUser}/>
+        <Header user={user} setUser={setUser} title = "Serveur"/>
 
         <main></main>
       
