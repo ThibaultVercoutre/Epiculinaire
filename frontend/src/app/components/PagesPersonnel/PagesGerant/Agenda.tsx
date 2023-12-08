@@ -6,8 +6,6 @@ import { Reservation as ReservationType } from '../../../types/Reservations';
 import "../../../style/agenda.css";
 
 import { HeaderPages } from '../PagesComunes/HeaderPages';
-import { get } from 'http';
-import { Reservation } from '../../PagesPrincipales/Reservation';
 
 interface AgendaProps {
     page: number;
@@ -23,7 +21,7 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
     const currentDateOfWeek = currentDate.getDay();
 
     const daysToAdd = currentDateOfWeek > 1 ? -1 * (currentDateOfWeek - 1) : -6;
-    const weekDatesArray = [];
+    const weekDatesArray: string[] = [];
     
     for (let i = 0; i < 7; i++) {
         const newDate = new Date();
@@ -36,22 +34,30 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
     const [jour, setJour] = useState(["", "", "", "", "", "", ""]);
     const [day, setDay] = useState(["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]);
 
-    const [liste_dates] = useState(["", "", "", "", "", "", ""]);
-
-    const fetchReservation = async () => {
+    const fetchReservation = async (): Promise<any> => {
         return (await axios.get(`http://localhost:5000/reservations`)).data;
     };
 
+    const fetchReservation2 = async (date: string): Promise<any> => {
+        return (await axios.get(`http://localhost:5000/reservation/${date}`)).data;
+    };
+
+    
+
     useEffect(() => {
-        const getReservations = async () => {
-            const reservationsFromServer = await fetchReservation();
-            reservationsFromServer.forEach((element: any) => {
-                element.date = new Date(element.date);
-            });
-            setReservations(reservationsFromServer);
-            console.log(reservationsFromServer);
-        };
-        getReservations();
+        // const day = new Date();
+        // handleSetDay(day.getDay() - 1);
+
+        // const getReservations = async () => {
+        //     const reservationsFromServer = await fetchReservation();
+        //     reservationsFromServer.forEach((element: any) => {
+        //         element.date = new Date(element.date);
+        //     });
+        //     setReservations(reservationsFromServer);
+        //     console.log(reservationsFromServer);
+        // };
+
+        // getReservations();
     }, []);
 
     useEffect(() => {
@@ -63,7 +69,7 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
                         {table}
                         <tr>
                             <td className='name'>{element.nom}</td>
-                            <td className='quantity'>{element.nb_personnes}</td>
+                            <td className='quantity'>{element.nb_personnes} personne(s)</td>
                             <td className='date'>{element.date.toISOString().split('T')[1].split('.')[0]}</td>
                         </tr>
                     </>
@@ -75,9 +81,22 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
     }, [reservations]);
 
     const handleSetDay = (jour: number) => {
+        
+        const day = new Date();
         let newJour = ["", "", "", "", "", "", ""];
         newJour[jour] = "selected";
         setJour(newJour);
+
+        const getReservations = async () => {
+            const reservationsFromServer = await fetchReservation2(weekDatesArray[jour]);
+            reservationsFromServer.forEach((element: any) => {
+                element.date = new Date(element.date);
+            });
+            setReservations(reservationsFromServer);
+        };
+
+        getReservations();
+
     }
 
     return (    

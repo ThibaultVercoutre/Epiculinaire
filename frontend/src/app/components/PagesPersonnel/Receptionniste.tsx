@@ -14,7 +14,7 @@ interface ReceptionnistProps {
 export const Receptionniste = ({user, setUser}: ReceptionnistProps) => {
   return (    
     <>
-        <Header user={user} setUser={setUser}/>
+        <Header user={user} setUser={setUser} title = "Réceptionniste"/>
 
         <main></main>
       

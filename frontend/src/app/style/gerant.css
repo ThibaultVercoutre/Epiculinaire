@@ -80,6 +80,10 @@ div.titre{
     padding: 5px;
 }
 
+.header_stock tr:hover td{
+    background-color: #9F833B;
+}
+
 .header_stock tr:nth-child(odd){
     background-color: rgba(132, 118, 101, 0.8);   
 }
