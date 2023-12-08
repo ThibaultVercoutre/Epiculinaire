@@ -34,6 +34,27 @@ const PlatCommandeSchema: Schema = new Schema(
   }
 );
 
+const PlatEnPreparationSchema: Schema = new Schema(
+  {
+    id: {
+      type: Number,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    id_table: {
+      type: Number,
+      required: true,
+    },
+    etat: {
+      type: String,
+      required: true,
+    },
+  }
+);
+
 export interface IIPlat {
     _id: Types.ObjectId;
     platname: string;
@@ -48,10 +69,22 @@ export interface IIPlatCommande {
     date: Date;
 }
 
+export interface IIPlatEnPreparation {
+  _id: Types.ObjectId;
+  id: number;
+  name: string;
+  id_table: number;
+  etat: string;
+}
+
 export interface IPlat extends Omit<IIPlat, "_id">, Document {}
 
 export interface IPlatCommande extends Omit<IIPlatCommande, "_id">, Document {}
 
+export interface IPlatEnPreparation extends Omit<IIPlatEnPreparation, "_id">, Document {}
+
 export const Plat = model<IPlat, Model<IPlat>>("Plat", PlatSchema, "plats");
 
 export const PlatCommande = model<IPlatCommande, Model<IPlatCommande>>("PlatCommande", PlatCommandeSchema, "platscommandes");
+
+export const PlatEnPreparation = model<IPlatEnPreparation, Model<IPlatEnPreparation>>("PlatEnPreparation", PlatEnPreparationSchema, "PlatEnPreparation");

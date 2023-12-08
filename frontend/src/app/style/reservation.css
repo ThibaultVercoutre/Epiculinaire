@@ -1,0 +1,146 @@
+.reservation_client{
+  display: flex;
+  justify-content: space-around;
+  align-items: space-around;
+  width: 100%;
+}
+
+.reservation_client > div{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-centre {
+  width: 400px;
+  height: 300px;
+  background-image: url('../images/Serveur.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.reservationé, .reservationé1, .reservationé3, .reservationé4{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservationé > div, .reservationé2 > div, .reservationé3 > div{
+  background-color: rgba(46, 17, 11, 0.9);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.reservationé4 > div{
+  cursor: pointer;
+  background-color: rgb(175, 154, 102);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+input{
+  width: 100%;
+}
+
+.reservationé4 > div:hover{
+  background-color: #e0a017;
+}
+
+.form_reservation > div{
+  width: 50%;
+}
+
+.citation{
+  /* font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+  /* 
+
+  .reservationé div {
+    background-color: rgb(175, 154, 102);
+    display: block;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    width: 200px;
+    margin-left: 1000px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .reservationé input {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #2e110b;
+    padding: 30px;
+    margin-left: 1028px;
+    width: 80px;
+    height: 5px;
+    color: #fff;
+    border-radius: 10px;
+  }
+  .reservationé2 div {
+    background-color: rgb(175, 154, 102);
+    display: block;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    width: 200px;
+    margin-left: 1000px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .reservationé2 input {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #2e110b;
+    padding: 30px;
+    margin-left: 1028px;
+    width: 80px;
+    height: 5px;
+    color: #fff;
+    border-radius: 10px;
+  }
+  .reservationé3 div {
+    background-color: rgb(175, 154, 102);
+    display: block;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    width: 200px;
+    margin-left: 1000px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .reservationé3 input {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #2e110b;
+    padding: 30px;
+    margin-left: 1028px;
+    width: 80px;
+    height: 5px;
+    color: #fff;
+    border-radius: 10px;
+  }
+  .reservationé4 div {
+    background-color: rgb(175, 154, 102);
+    display: block;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    width: 200px;
+    margin-left: 1000px;
+    margin-bottom: 20px;
+    text-align: center;
+  } */

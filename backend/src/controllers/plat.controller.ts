@@ -9,3 +9,8 @@ export const getPlatsCommandes = async (req: any, res: any) => {
     const plats = await PlatsService.getPlatsCommandes();
     return res.status(200).json(plats);
 }
+
+export const getPlatsPreparation = async (req: any, res: any) => {
+    const plats = await PlatsService.getPlatsPreparation();
+    return res.status(200).json(plats);
+}

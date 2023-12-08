@@ -5,3 +5,4 @@ export const platRouter = express.Router();
 
 platRouter.get('/plats', PlatsController.getPlats);
 platRouter.get('/platscommandes', PlatsController.getPlatsCommandes);
+platRouter.get('/platspreparation', PlatsController.getPlatsPreparation);

@@ -1,6 +1,5 @@
 import { connexion } from "../../bdd/connect.js";
-import { Plat } from "../models/plat.model.js";
-import { PlatCommande } from "../models/plat.model.js";
+import { Plat, PlatCommande, PlatEnPreparation } from "../models/plat.model.js";
 
 export async function getPlats() {
     try{
@@ -35,6 +34,29 @@ export async function getPlatsCommandes() {
                     reject(err);
                 } else {
                     const plats = rows.map(row => new PlatCommande(row));
+                    db.close();
+                    resolve(plats);
+                }
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
+
+export async function getPlatsPreparation() {
+    try{
+        const db = await connexion();
+
+        return new Promise((resolve, reject) => {
+            const sql = "SELECT DISTINCT p.name as name, r.id_table as id_table, ec.Etat as etat FROM plat_en_preparation pp INNER JOIN Etat_commande ec ON pp.etat = ec.id_etat INNER JOIN plat p ON pp.id_plat = p.id INNER JOIN reservation r ON pp.id_reservation = r.id ORDER BY r.id_table ASC";
+            db.all(sql, [], (err, rows) => {
+                if (err) {
+                    db.close();
+                    reject(err);
+                } else {
+                    const plats = rows.map(row => new PlatEnPreparation(row));
                     db.close();
                     resolve(plats);
                 }

@@ -24,21 +24,41 @@ export const Historique = ({page, setPage}: HistoriqueProps) => {
         return (await axios.get(`http://localhost:5000/reservations`)).data;
     };
 
-    const handleSetDay = (reservation: number) => {
+    useEffect(() => {
+        const getReservations = async () => {
+            const reservationsFromServer = await fetchReservation();
+            reservationsFromServer.forEach((element: any) => {
+                element.date = new Date(element.date);
+            });
+            setSelectedReservation([]);
+            setReservations(reservationsFromServer);
+            console.log(reservationsFromServer);
+        };
+    
+        getReservations();
+    }, []);
+
+    const handleSetDay = (n_reserv: number) => {
         const SR: string[] = [];
-        reservations.forEach((element: any) => {
-            SR.push("");
-            setSelectedReservation(SR);
-        });
-        SR[reservation] = "selected";
+        console.log(n_reserv);
+        for(var i = 0; i < reservations.length; i++) {
+            if(SR.length == i + 1){
+                SR.push('selected');
+            }else{
+                SR.push('');
+            }
+        };
+        SR[n_reserv - 1] = "selected";
         setSelectedReservation(SR);
+        console.log(reservations, selectedReservation, SR);
     }
 
     useEffect(() => {
         const createTable = () => {
             let table = <></>;
             let i = 0;
-            reservations.forEach((element) => {
+            for(var j = 0; j < reservations.length; j++) {
+                const element = reservations[i];
                 table = (
                     <>
                         {table}
@@ -49,31 +69,13 @@ export const Historique = ({page, setPage}: HistoriqueProps) => {
                         </tr>
                     </>
                 );
+                console.log(i);
                 i++;
-            });
+            };
             setTableau(table);
         };
         createTable();
     }, [reservations]);
-
-    useEffect(() => {
-
-        const getReservations = async () => {
-            const reservationsFromServer = await fetchReservation();
-            reservationsFromServer.forEach((element: any) => {
-                element.date = new Date(element.date);
-            });
-            const SR = selectedReservation;
-            reservationsFromServer.forEach((element: any) => {
-                SR.push("");
-            });      
-            setSelectedReservation(SR);
-            setReservations(reservationsFromServer);
-            console.log(reservationsFromServer);
-        };
-
-        getReservations();
-    }, []);
 
     return (    
         <>  

@@ -11,7 +11,7 @@ export const TableauGerant = ({page, setPage}: TableauGerantProps) => {
 
     return (    
         <>
-            <div className="titre">Bienvenu Gérant</div>
+            <div className="titre">Bienvenue Gérant</div>
             <div className="nav_gerant">
                 <div onClick={() => changePage(1)}>Finance</div>
                 <div onClick={() => changePage(2)}>Suivi plats</div>
