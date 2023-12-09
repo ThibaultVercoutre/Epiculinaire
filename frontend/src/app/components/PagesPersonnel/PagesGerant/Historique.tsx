@@ -19,8 +19,13 @@ export const Historique = ({page, setPage}: HistoriqueProps) => {
     const [selectedReservation, setSelectedReservation] = useState<string[]>([]);
     
     const [tableau, setTableau] = useState<JSX.Element>(<></>);
+    const [tableauCommandes, setTableauCommandes] = useState<JSX.Element>(<></>);
 
     const fetchReservation = async (): Promise<any> => {
+        return (await axios.get(`http://localhost:5000/reservations`)).data;
+    };
+
+    const fetchCommande = async (): Promise<any> => {
         return (await axios.get(`http://localhost:5000/reservations`)).data;
     };
 
@@ -29,6 +34,9 @@ export const Historique = ({page, setPage}: HistoriqueProps) => {
             const reservationsFromServer = await fetchReservation();
             reservationsFromServer.forEach((element: any) => {
                 element.date = new Date(element.date);
+                if(element.date.toISOString().split('.')[0] > new Date().toISOString().split('.')[0]) {
+                    reservationsFromServer.splice(reservationsFromServer.indexOf(element), 1);
+                }
             });
             setSelectedReservation([]);
             setReservations(reservationsFromServer);
@@ -39,38 +47,28 @@ export const Historique = ({page, setPage}: HistoriqueProps) => {
     }, []);
 
     const handleSetDay = (n_reserv: number) => {
-        const SR: string[] = [];
-        console.log(n_reserv);
-        for(var i = 0; i < reservations.length; i++) {
-            if(SR.length == i + 1){
-                SR.push('selected');
-            }else{
-                SR.push('');
-            }
-        };
-        SR[n_reserv - 1] = "selected";
-        setSelectedReservation(SR);
-        console.log(reservations, selectedReservation, SR);
+        document.querySelectorAll('.reservation').forEach((element) => {
+            element.classList.remove('selected');
+        });
+        document.querySelector('.reservation.selected' + n_reserv)?.classList.add('selected');
     }
 
     useEffect(() => {
         const createTable = () => {
             let table = <></>;
-            let i = 0;
             for(var j = 0; j < reservations.length; j++) {
-                const element = reservations[i];
+                const element = reservations[j];
+                const i = j + 1;
                 table = (
                     <>
                         {table}
-                        <tr onClick={() => handleSetDay(i)} className={`reservation ${selectedReservation[i]}`}>
+                        <tr onClick={() => handleSetDay(i)} className={`reservation selected${i}`}>
                             <td className='name'>{element.nom}</td>
                             <td className='quantity'>{element.nb_personnes} personne(s)</td>
-                            <td className='date'>{element.date.toISOString().split('T')[1].split('.')[0]}</td>
+                            <td className='date'>{element.date.toISOString().split('T')[0] + " " + element.date.toISOString().split('T')[1].split('.')[0]}</td>
                         </tr>
                     </>
                 );
-                console.log(i);
-                i++;
             };
             setTableau(table);
         };
@@ -91,6 +89,18 @@ export const Historique = ({page, setPage}: HistoriqueProps) => {
                     </thead>
                     <tbody>
                         {tableau}
+                    </tbody>
+                </table></div>
+                <div className='commandes'><table>
+                    <thead>
+                        <tr>
+                            <td className='name'>Nom plat</td>
+                            <td className='nombre'>Type</td>
+                            <td className='date'>Prix</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* {tableau} */}
                     </tbody>
                 </table></div>
             </div>
