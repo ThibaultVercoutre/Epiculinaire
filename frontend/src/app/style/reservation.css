@@ -12,7 +12,7 @@
 
 .image-centre{
   flex: 2;
-  height: 300px;
+  height: 400px;
   background-image: url("../images/Serveur.png");
   background-size: cover;
   background-position: center;
@@ -25,6 +25,7 @@
   padding: 10px;
   border-radius: 10px;
   text-align: center;
+  font-size: 30px;
 }
 
 .form_reservation{
