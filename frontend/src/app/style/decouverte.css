@@ -14,8 +14,7 @@
   /* styles.css */
 
 .img1{
-    width: 500px;
-    height: 300px;
+    flex:1;
     background-image: url("../images/plat0.jpeg");
 }
 
@@ -28,25 +27,31 @@
 }
 
 .column {
+    flex: 1;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-    float: left;
-    width: 33.33%;
-    padding: 5px;
-    
+.row{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .content{
-    margin-top: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     border: #2e110b;
     background-color: rgba(255, 255, 255, 0.5); 
-    margin-left: 30%;
-
-  }
+    padding: 10px;
+}
   
-  .row{
+/* .row{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,9 +59,9 @@
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
+}
   .row::after {
   
       content: "";
       display: table;
-      clear: both;}
+      clear: both;} */

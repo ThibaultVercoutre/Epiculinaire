@@ -1,3 +1,10 @@
+.historique{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 10px;
+}
+
 .commandes{
     display: flex;
     justify-content: space-between;
@@ -54,9 +61,9 @@
     cursor: pointer;
 }
 
-.commandes tbody tr:hover td{
+/* .commandes tbody tr:hover td{
     background-color: #9F833B;
-}
+} */
 
 .commandes thead tr td{
     background-color: rgba(46, 17, 11, 0.9);  
@@ -68,5 +75,5 @@
 }
   
 .reservation.selected {
-    background-color: #2e110ba1;
+    background-color: rgba(46, 17, 11, 0.9) !important;
 }
