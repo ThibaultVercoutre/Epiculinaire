@@ -1,0 +1,70 @@
+.reservation_client{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+}
+
+.reservation_client > div{
+  margin: 10px;
+}
+
+.image-centre{
+  flex: 2;
+  height: 400px;
+  background-image: url("../images/Serveur.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.citation{
+  flex: 3;
+  background-color: rgba(46, 17, 11, 0.9);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.form_reservation{
+  flex: 2;
+}
+
+.form_reservation > div{
+  margin: 0px 40px 0px 40px;
+}
+
+input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.reservationC > div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.un div, .deux > div, .trois > div, .quatre > div{
+  background-color: rgba(46, 17, 11, 0.9);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.cinq > div{
+  background-color: rgba(189, 173, 152, 0.61);
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.cinq > div:hover{
+  background-color: #9F833B;
+}
