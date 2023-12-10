@@ -61,6 +61,14 @@ const TableCommandeSchema: Schema = new Schema(
         type: Number,
         required: true,
     },
+    avancement: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
     commandes: [ Commande.schema ],
   }
 );
@@ -72,6 +80,8 @@ export interface IITableCommande {
     x: number;
     y: number;
     rotation: number;
+    avancement: String;
+    name: String;
     commandes: [ ICommande ];
 }
 

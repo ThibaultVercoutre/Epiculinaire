@@ -19,6 +19,7 @@ export interface IIServeurAffectation {
     _id: Types.ObjectId;
     serveur_name: string;
     tables: ITableEtat[];
+    id: number;
 }
 
 export interface IServeurAffectation extends Omit<IIServeurAffectation, "_id">, Document {}

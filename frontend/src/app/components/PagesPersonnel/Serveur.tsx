@@ -5,6 +5,7 @@ import { Header } from "./PagesComunes/Header";
 import { Footer } from "../Footer";
 
 import { User as UserType } from "../../types/User";
+import { Serveur as ServeurType } from '../../types/Serveur';
 
 import { TableauServeur } from "./PagesServeur/TableauServeur";
 import { ChoixServeur } from "./PagesServeur/ChoixServeur";
@@ -16,20 +17,25 @@ interface ServeurProps {
 
 export const Serveur = ({user, setUser}: ServeurProps) => {
 
-  const [page, setPage] = useState(0);
+    const [page, setPage] = useState(0);
+    const [serveur, setServeur] = useState<ServeurType | null>(null);
 
     const components: {[key: number]: JSX.Element} = {
-      0: <ChoixServeur page={page} setPage={setPage} />,
-      1: <TableauServeur page={page} setPage={setPage}/>
+        0: <ChoixServeur page={page} setPage={setPage} serveur={serveur} setServeur={setServeur} />,
+        1: <TableauServeur page={page} setPage={setPage} serveur={serveur} setServeur={setServeur}/>
     };
 
-  return (    
-    <>
-        <Header user={user} setUser={setUser} title = "Serveur"/>
+    useEffect(() => {
+        console.log(serveur);
+    }, [serveur]);
 
-        {components[page]}
-      
-        <Footer />     
-    </> 
-  )
+    return (    
+      <>
+          <Header user={user} setUser={setUser} title = "Serveur"/>
+
+          {components[page]}
+        
+          {/* <Footer />      */}
+      </> 
+    )
 }

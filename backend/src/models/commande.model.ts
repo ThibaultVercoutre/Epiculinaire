@@ -10,10 +10,18 @@ const CommandeSchema: Schema = new Schema(
       type: String,
       required: true,
     },
+    name: {
+        type: String,
+        required: true,
+    },
     etat: {
         type: Number,
         required: true,
     },
+    etatString: {
+      type: String,
+      required: true,
+  },
   }
 );
 
@@ -22,6 +30,7 @@ export interface IICommande {
     id: number;
     heure: number;
     etat: number;
+    name: string;
 }
 
 export interface ICommande extends Omit<IICommande, "_id">, Document {}

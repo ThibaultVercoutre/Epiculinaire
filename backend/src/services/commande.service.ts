@@ -1,5 +1,5 @@
 import { connexion } from "../../bdd/connect.js";
-import { Plat, IPlat } from "../models/plat.model.js";
+import { PlatCommande, IPlatCommande } from "../models/plat.model.js";
 
 export async function getCommandeById(id: number) {
     try{
@@ -13,12 +13,12 @@ export async function getCommandeById(id: number) {
                         INNER JOIN type t ON t.id = p.id_type
                         WHERE r.id = ?
                         ORDER BY t.id`;
-            db.all(sql, [id], (err: Error, rows: IPlat[]) => {
+            db.all(sql, [id], (err: Error, rows: IPlatCommande[]) => {
                 if (err) {
                     db.close();
                     reject(err);
                 } else {
-                    const users = rows.map(row => new Plat(row));
+                    const users = rows.map(row => new PlatCommande(row));
                     db.close();
                     resolve(users);
                 }

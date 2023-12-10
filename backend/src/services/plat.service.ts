@@ -24,6 +24,33 @@ export async function getPlats() {
     }
 }
 
+export async function getPlatID(id: number) {
+    try{
+        const db = await connexion();
+
+        return new Promise((resolve, reject) => {
+            const sql = `SELECT plat.name AS platname, type.name AS typename 
+                        FROM plat 
+                        INNER JOIN type ON plat.id_type = type.id 
+                        WHERE NOT EXISTS ( SELECT * FROM composition LEFT JOIN stock ON composition.id_ingredient = stock.id WHERE composition.id_plat = plat.id AND (stock.quantity IS NULL OR stock.quantity < composition.quantite))
+                        AND plat.id = ?`;
+            db.all(sql, [id], (err: Error, rows: IPlat[]) => {
+                if (err) {
+                    db.close();
+                    reject(err);
+                } else {
+                    const plats = rows.map(row => new Plat(row));
+                    db.close();
+                    resolve(plats);
+                }
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
+
 export async function getPlatsCommandes() {
     try{
         const db = await connexion();

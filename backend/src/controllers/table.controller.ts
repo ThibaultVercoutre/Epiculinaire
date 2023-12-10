@@ -10,9 +10,15 @@ export const getTablesDetails = async (req: any, res: any) => {
     return res.status(200).json(personnel);
 }
 
-export const getTablesDetailsId = async (req: any, res: any) => {
+export const getTablesDetailsIdT = async (req: any, res: any) => {
     const { id } = req.params;
-    const personnel = await TableService.getTablesDetailsId(id);
+    const personnel = await TableService.getTablesDetailsIdT(id);
+    return res.status(200).json(personnel);
+}
+
+export const getTablesDetailsIdR = async (req: any, res: any) => {
+    const { id } = req.params;
+    const personnel = await TableService.getTablesDetailsIdR(id);
     return res.status(200).json(personnel);
 }
 

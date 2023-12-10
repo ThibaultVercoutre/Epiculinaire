@@ -7,7 +7,9 @@ tableRouter.get('/tables', TableController.getTables);
 
 tableRouter.get('/tablesdetails', TableController.getTablesDetails);
 
-tableRouter.get('/tablesdetails/:id', TableController.getTablesDetailsId);
+tableRouter.get('/tablesdetails/:id', TableController.getTablesDetailsIdT);
+
+tableRouter.get('/tablesdetailsR/:id', TableController.getTablesDetailsIdR);
 
 tableRouter.get('/tablesavancement', TableController.getTablesAvancement);
 

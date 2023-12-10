@@ -1,5 +1,5 @@
 interface HeaderPagesProps {
-    title: string;
+    title: string | undefined;
     page: number;
     setPage: (page: number) => void;
 }

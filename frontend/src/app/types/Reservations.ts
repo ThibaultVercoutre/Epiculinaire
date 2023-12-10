@@ -2,6 +2,6 @@ export type Reservation = {
     id: number;
     nb_personnes: number;
     nom: string;
-    date: Date;
+    date: string;
     _id: string;
 }

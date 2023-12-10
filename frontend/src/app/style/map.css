@@ -1,0 +1,120 @@
+.tables{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+}
+
+.tables .info{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.tables .map{
+    flex: 2;
+}
+
+.titre_details{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    background-color: rgba(46, 17, 11, 0.9);
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.details div:not(.titre_details):not(.affiche_commandes){
+    background-color: rgba(46, 17, 11, 0.9);
+    margin: 5px;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.affiche_commandes{
+    background-color: rgba(189, 173, 152, 0.61);
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.affiche_commandes:hover{
+    background-color: #9F833B;
+}
+
+.commandes .tableau{
+    margin: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.commandes .comptes{
+    margin: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.commandes th{
+    border-radius: 20px;  
+    background-color: #9F833B;
+    padding: 5px;
+}
+
+.commandes tr{
+    border-radius: 20px;  
+    background-color: rgba(189, 173, 152, 0.8);
+    padding: 5px;
+}
+
+.commandes tr:nth-child(odd){
+    background-color: rgba(132, 118, 101, 0.8);   
+}
+
+.commandes tr td{
+    font-weight: bold;
+    padding: 20px; 
+    margin-top: 20px;
+    margin-left: 100px; 
+    margin-right: 100px;
+    transition-duration: 0.1s;
+}
+
+.commandes tr td:first-child{
+    border-radius: 20px 0px 0px 20px;  
+}
+
+.commandes tr td:last-child{
+    border-radius: 0px 20px 20px 0px;  
+}
+
+.commandes tbody tr td{
+    cursor: pointer;
+}
+
+.commandes thead{
+    position: sticky;
+    top: 2px;
+}
+
+.commandes thead tr td{
+    background-color: rgba(46, 17, 11, 0.9);  
+    cursor: default;
+}

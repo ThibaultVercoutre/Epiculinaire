@@ -4,9 +4,10 @@ import axios from "axios";
 interface MapRestoProps {
     widthdiv: number;
     heightdiv: number;
+    setSselectTable: (selectTable: number) => void;
 }
 
-export const MapResto = ({widthdiv, heightdiv}: MapRestoProps) => {
+export const MapResto = ({widthdiv, heightdiv, setSselectTable}: MapRestoProps) => {
 
     const [size, setSize] = useState({ width: 0, height: 0 });
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -385,9 +386,8 @@ export const MapResto = ({widthdiv, heightdiv}: MapRestoProps) => {
         const taille_tables = 15;
         tables.forEach(table => {
             if (table.id === selectedTable) {
-                console.log(table.x, table.y, table.ex_x, table.ex_y);
                 if(Math.abs(table.x - table.ex_x) <= 1 && Math.abs(table.y - table.ex_y) <= 1){
-                    
+                    setSselectTable(table.id);
                     return;
                 }
                 const table_taille = table.width*2/taille_tables

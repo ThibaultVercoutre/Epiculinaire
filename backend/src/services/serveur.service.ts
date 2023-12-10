@@ -8,7 +8,7 @@ export async function getServeurAffectation() {
         console.log("db", db);
 
         return new Promise((resolve, reject) => {
-            const sql = `SELECT p.name as serveur_name
+            const sql = `SELECT p.id_personnel as id, p.name as serveur_name
                          FROM personnel p
                          LEFT JOIN user u ON p.type = u.id_user
                          WHERE u.name = "serveur"`;
@@ -22,6 +22,7 @@ export async function getServeurAffectation() {
                     rows.forEach((row: any) => {
                         const serveurAffectation = new ServeurAffectation({
                             serveur_name: row.serveur_name,
+                            id: row.id,
                             table: []
                         });
                         serveursAffectation.push(serveurAffectation);
