@@ -7,6 +7,8 @@ platRouter.get('/plats', PlatsController.getPlats);
 
 platRouter.get('/plat/:id', PlatsController.getPlatID);
 
+platRouter.get('/plattype/:id', PlatsController.getPlatsByType);
+
 platRouter.get('/platscommandes', PlatsController.getPlatsCommandes);
 
 platRouter.get('/platspreparation', PlatsController.getPlatsPreparation);

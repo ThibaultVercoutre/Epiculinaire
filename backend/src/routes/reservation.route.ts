@@ -7,4 +7,6 @@ reservationRouter.get('/reservations', ReservationController.getReservations);
 
 reservationRouter.get('/reservation/:date', ReservationController.getReservation);
 
+reservationRouter.get('/reservationbytable/:id', ReservationController.getReservationByTable);
+
 reservationRouter.post('/reservationadd/:nb_personnes/:name/:mail/:date', ReservationController.setReservation);

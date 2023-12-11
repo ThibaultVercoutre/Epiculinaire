@@ -13,6 +13,19 @@ const PlatSchema: Schema = new Schema(
   }
 );
 
+const PlatMenuSchema: Schema = new Schema(
+  {
+    id: {
+      type: Number,
+      required: true,
+    },
+    platname: {
+      type: String,
+      required: true,
+    },
+  }
+);
+
 const PlatCommandeSchema: Schema = new Schema(
   {
     platname: {
@@ -61,6 +74,12 @@ export interface IIPlat {
     typename: string;
 }
 
+export interface IIPlatMenu {
+    _id: Types.ObjectId;
+    id: number;
+    platname: string;
+}
+
 export interface IIPlatCommande {
     _id: Types.ObjectId;
     platname: string;
@@ -79,11 +98,15 @@ export interface IIPlatEnPreparation {
 
 export interface IPlat extends Omit<IIPlat, "_id">, Document {}
 
+export interface IPlatMenu extends Omit<IIPlatMenu, "_id">, Document {}
+
 export interface IPlatCommande extends Omit<IIPlatCommande, "_id">, Document {}
 
 export interface IPlatEnPreparation extends Omit<IIPlatEnPreparation, "_id">, Document {}
 
 export const Plat = model<IPlat, Model<IPlat>>("Plat", PlatSchema, "plats");
+
+export const PlatMenu = model<IPlatMenu, Model<IPlatMenu>>("PlatMenu", PlatMenuSchema, "platsmenu");
 
 export const PlatCommande = model<IPlatCommande, Model<IPlatCommande>>("PlatCommande", PlatCommandeSchema, "platscommandes");
 

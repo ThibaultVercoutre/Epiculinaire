@@ -23,7 +23,7 @@
 }
 
 div.titre{
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
     padding: 10px; 
     border-radius: 10px; 
@@ -31,6 +31,7 @@ div.titre{
     display: flex;
     justify-content:center;
     border-radius: 20px;
+    text-align: center;
 }
 
 .map{

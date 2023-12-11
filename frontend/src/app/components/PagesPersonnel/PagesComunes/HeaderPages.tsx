@@ -1,13 +1,14 @@
 interface HeaderPagesProps {
     title: string | undefined;
     page: number;
+    n_page: number;
     setPage: (page: number) => void;
 }
 
-export const HeaderPages = ({title, page, setPage}: HeaderPagesProps) => {
+export const HeaderPages = ({n_page, title, page, setPage}: HeaderPagesProps) => {
 
     const returnPreviousPage = () => {
-        setPage(0);
+        setPage(n_page);
     }
 
     return (    

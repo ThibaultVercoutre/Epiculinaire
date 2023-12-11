@@ -78,7 +78,7 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
                         <tr>
                             <td className='name'>{element.nom}</td>
                             <td className='quantity'>{element.nb_personnes} personne(s)</td>
-                            <td className='date'>{element.date.toISOString().split('T')[1].split('.')[0]}</td>
+                            <td className='date'>{element.date.split('T')[1].split('.')[0]}</td>
                         </tr>
                     </>
                 );
@@ -137,7 +137,7 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
 
     return (    
         <>
-            <HeaderPages page = {page} setPage = {setPage} title = "Agenda" />
+            <HeaderPages page = {page} setPage = {setPage} title = "Agenda" n_page={0}/>
             <div className='agenda'>
                 <div className='select_time'>
                     <div onClick={() => handleSetDay(0)} className= {`day ${jour[0]}`}>{weekDatesArray[0]} {day[0]}</div>

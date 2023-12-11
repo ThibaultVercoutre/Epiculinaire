@@ -17,6 +17,7 @@ import { questionRouter } from "./routes/question.route.js";
 import { reponseRouter } from "./routes/reponse.route.js";
 import { financeRouter } from "./routes/finance.route.js";
 import { commandeRouter } from "./routes/commande.route.js";
+import { ingredientRouter } from "./routes/ingredient.route.js";
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use("/", questionRouter);
 app.use("/", reponseRouter);
 app.use("/", financeRouter);
 app.use("/", commandeRouter);
+app.use("/", ingredientRouter);
 
 app.get("/", async (req, res) => {
   res.send("Hello World!");

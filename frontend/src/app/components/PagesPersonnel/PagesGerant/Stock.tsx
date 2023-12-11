@@ -62,7 +62,7 @@ export const Stock = ({page, setPage}: StockProps) => {
 
     return (    
         <>
-            <HeaderPages page = {page} setPage = {setPage} title = "Stock" />
+            <HeaderPages page = {page} setPage = {setPage} title = "Stock" n_page={0}/>
             <div className='header_stock'>
                 <table className='list_stock'>
                     {tableau}

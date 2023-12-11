@@ -21,7 +21,7 @@ export const TableauServeur = ({page, setPage, serveur}: TableauServeurProps) =>
     
     return (    
         <>
-            <HeaderPages page = {page} setPage = {setPage} title = {serveur?.serveur_name}/>
+            <HeaderPages page = {page} setPage = {setPage} title = {serveur?.serveur_name} n_page={0}/>
             <div className="nav_serveur">
                 <div onClick={() => changePage(2)}>Faire une commande</div>
             </div>

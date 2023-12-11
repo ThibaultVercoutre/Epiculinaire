@@ -49,6 +49,30 @@ export async function getReservation(date: string) {
     }
 }
 
+export async function getReservationByTable(id: number) {
+    try{
+        const db = await connexion();
+        console.log("db", db);
+        
+        return new Promise((resolve, reject) => {
+            const sql = "SELECT id FROM reservation WHERE id_table = ?"
+            db.all(sql, [id], (err: Error, rows: IReservation[]) => {
+                if (err) {
+                    db.close();
+                    reject(err);
+                } else {
+                    const reservations = rows.map(row => new Reservation(row));
+                    db.close();
+                    resolve(reservations);
+                }
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
+
 export async function setReservation(nb_personnes: number, name: string, mail: string, date: string) {
     try{
         const db = await connexion();
@@ -60,7 +84,6 @@ export async function setReservation(nb_personnes: number, name: string, mail: s
                     db.close();
                     reject(err);
                 } else {
-                    const reservations = rows.map(row => new Reservation(row));
                     db.close();
                     resolve(["Success"]);
                 }

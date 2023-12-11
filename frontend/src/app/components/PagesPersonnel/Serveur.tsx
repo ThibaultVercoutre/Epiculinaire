@@ -9,6 +9,7 @@ import { Serveur as ServeurType } from '../../types/Serveur';
 
 import { TableauServeur } from "./PagesServeur/TableauServeur";
 import { ChoixServeur } from "./PagesServeur/ChoixServeur";
+import { FaireCommande } from "./PagesServeur/FaireCommande";
 
 interface ServeurProps {
     user: UserType | null;
@@ -22,12 +23,12 @@ export const Serveur = ({user, setUser}: ServeurProps) => {
 
     const components: {[key: number]: JSX.Element} = {
         0: <ChoixServeur page={page} setPage={setPage} serveur={serveur} setServeur={setServeur} />,
-        1: <TableauServeur page={page} setPage={setPage} serveur={serveur} setServeur={setServeur}/>
+        1: <TableauServeur page={page} setPage={setPage} serveur={serveur} setServeur={setServeur}/>,
+        2: <FaireCommande page={page} setPage={setPage} serveur={serveur} setServeur={setServeur}/>
     };
 
-    useEffect(() => {
-        console.log(serveur);
-    }, [serveur]);
+    // useEffect(() => {
+    // }, [serveur]);
 
     return (    
       <>

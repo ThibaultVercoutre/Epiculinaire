@@ -20,3 +20,9 @@ export const getPlatsPreparation = async (req: any, res: any) => {
     const plats = await PlatsService.getPlatsPreparation();
     return res.status(200).json(plats);
 }
+
+export const getPlatsByType = async (req: any, res: any) => {
+    const id = req.params.id;
+    const plats = await PlatsService.getPlatsByType(id);
+    return res.status(200).json(plats);
+}

@@ -3,14 +3,8 @@ export type Serveur = {
     serveur_name: string;
     tables: [
         {
-            id: {
-                type: Number,
-                required: true,
-            },
-            mission: {
-            type: String,
-            required: true,
-            },
+            id: Number,
+            mission: String,
         }
     ]
     _id: string;

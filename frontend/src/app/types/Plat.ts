@@ -3,3 +3,8 @@ export type Plat = {
     typename: string;
     date: string;
 }
+
+export type PlatMenu = {
+    id: number;
+    platname: string;
+}

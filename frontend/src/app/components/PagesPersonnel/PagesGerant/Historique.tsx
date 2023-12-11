@@ -113,7 +113,7 @@ export const Historique = ({page, setPage}: HistoriqueProps) => {
 
     return (    
         <>  
-            <HeaderPages page={page} setPage={setPage} title = "Historique"/>
+            <HeaderPages page={page} setPage={setPage} title = "Historique" n_page={0}/>
             <div className='historique'>
                 <div className='commandes'><table>
                     <thead>

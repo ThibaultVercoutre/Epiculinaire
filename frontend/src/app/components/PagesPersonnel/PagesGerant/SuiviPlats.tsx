@@ -27,6 +27,7 @@ export const SuiviPlats = ({page, setPage}: SuiviPlatsProps) => {
     };
 
     useEffect(() => {
+        console.log('afficher table');
         const getReservations = async () => {
             const reservationsFromServer = await fetchReservation();
             setReservations(reservationsFromServer);
@@ -36,59 +37,62 @@ export const SuiviPlats = ({page, setPage}: SuiviPlatsProps) => {
     }, []);
 
     useEffect(() => {
-        const createTable = () => {
-            let tablePret = <></>;
-            let tableEnPreparation = <></>;
-            let tableEnAttente = <></>;
-            let i = 0;
-            for(var j = 0; j < reservations.length; j++) {
-                const element = reservations[i];
-                console.log(element.etat);
-                if(element.etat == "Pret"){
-                    tablePret = (
-                        <>
-                            {tablePret}
-                            <tr>
-                                <td className='name'>{element.name}</td>
-                                <td className='quantity'>Table n°{element.id_table}</td>
-                            </tr>
-                        </>
-                    );
-                }else if(element.etat == "En preparation"){
-                    tableEnPreparation = (
-                        <>
-                            {tableEnPreparation}
-                            <tr>
-                                <td className='name'>{element.name}</td>
-                                <td className='quantity'>Table n°{element.id_table}</td>
-                            </tr>
-                        </>
-                    );
-                }else if(element.etat == "a preparer"){
-                    tableEnAttente = (
-                        <>
-                            {tableEnAttente}
-                            <tr>
-                                <td className='name'>{element.name}</td>
-                                <td className='quantity'>Table n°{element.id_table}</td>
-                            </tr>
-                        </>
-                    );
-                }
-                i++;
+        console.log(reservations.length);
+        if(reservations.length > 0){
+            const createTable = () => {
+                let tablePret = <></>;
+                let tableEnPreparation = <></>;
+                let tableEnAttente = <></>;
+                for(var j = 0; j < reservations.length; j++) {
+                    const i = j;
+                    const element = reservations[i];
+                    const name = element.name;
+                    const id_table = element.id_table;
+                    if(element.etat == "pret"){
+                        tablePret = (
+                            <>
+                                {tablePret}
+                                <tr>
+                                    <td className='name'>{name}</td>
+                                    <td className='quantity'>Table n°{id_table}</td>
+                                </tr>
+                            </>
+                        );
+                    }else if(element.etat == "preparation"){
+                        tableEnPreparation = (
+                            <>
+                                {tableEnPreparation}
+                                <tr>
+                                    <td className='name'>{name}</td>
+                                    <td className='quantity'>Table n°{id_table}</td>
+                                </tr>
+                            </>
+                        );
+                    }else if(element.etat == "attente"){
+                        tableEnAttente = (
+                            <>
+                                {tableEnAttente}
+                                <tr>
+                                    <td className='name'>{name}</td>
+                                    <td className='quantity'>Table n°{id_table}</td>
+                                </tr>
+                            </>
+                        );
+                    }
+                };
+                setTableauPret(tablePret);
+                setTableauEnPreparation(tableEnPreparation);
+                setTableauEnAttente(tableEnAttente);
+                // console.log(tableauEnAttente, tableauEnPreparation, tableauPret)
             };
-            setTableauPret(tableEnAttente);
-            setTableauEnPreparation(tableEnPreparation);
-            setTableauEnAttente(tableEnAttente);
-            // console.log(tableauEnAttente, tableauEnPreparation, tableauPret)
-        };
 
-        createTable();
+            createTable();
+        }
     }, [reservations]);
 
     return (    
         <>  
-            <HeaderPages page={page} setPage={setPage} title = "Suivi Plats"/>
+            <HeaderPages page={page} setPage={setPage} title = "Suivi Plats" n_page={0}/>
             <div className='tableaux'>
                 <div className='tableau'>
                     <div className='titre_table'>En attente</div>

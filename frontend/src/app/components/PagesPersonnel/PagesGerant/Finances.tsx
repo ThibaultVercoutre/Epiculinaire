@@ -113,7 +113,7 @@ export const Finances = ({page, setPage}: FinancesProps) => {
 
     return (    
         <>  
-            <HeaderPages page={page} setPage={setPage} title = "Finances"/>
+            <HeaderPages page={page} setPage={setPage} title = "Finances" n_page={0}/>
             <div className='header_finances'>
                 <div className='comptes'>
                     <div className='compte'>

@@ -95,7 +95,7 @@ export const Tables = ({page, setPage}: TablesProps) => {
 
     return (    
         <>  
-            <HeaderPages page={page} setPage={setPage} title = "Tables"/>
+            <HeaderPages page={page} setPage={setPage} title = "Tables" n_page={0}/>
             <div className='tables'>
                 <div className='info'>
                     <div className='details'>
