@@ -56,7 +56,7 @@ export const ChoixCuisinier = ({setPage, setCuisinier}: ChoixCuisinierProps) => 
 
     return (    
         <>
-            <div className="titre">Bienvenue Serveur</div>
+            <div className="titre">Bienvenue Cuisinier</div>
             <div className="nav_serveur">
                 {TableauServeur}
             </div>
