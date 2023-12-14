@@ -2,55 +2,55 @@ import axios from 'axios';
 
 import { useState, useEffect, use } from 'react';
 
-
-import { Serveur as ServeurType } from '../../../types/Serveur';
-import { serverHooks } from 'next/dist/server/app-render/entry-base';
+import { Cuisinier as CuisinierType } from '../../../types/Cuisinier';
 
 interface ChoixCuisinierProps {
     page: number;
     setPage: (page: number) => void;
+    setCuisinier: (cuisinier: CuisinierType | null) => void;
 }
   
-export const ChoixCuisinier = ({setPage}: ChoixCuisinierProps) => {
+export const ChoixCuisinier = ({setPage, setCuisinier}: ChoixCuisinierProps) => {
 
-    const [serveurs, setServeurs] = useState<ServeurType[]>([]);
+    const [cuisiniers, setCuisiniers] = useState<CuisinierType[]>([]);
     
     const [TableauServeur, setTableauServeur] = useState<JSX.Element>(<></>);
     
-    const fetchListeServeurs = async (): Promise<any> => {
-        return (await axios.get(`http://localhost:5000/serveursaffectations`)).data;
+    const fetchListeCuisinier = async (): Promise<any> => {
+        return (await axios.get(`http://localhost:5000/cuisiniers`)).data;
     };
 
     useEffect(() => {
         const getReservations = async () => {
-            const reservationsFromServer = await fetchListeServeurs();
-            setServeurs(reservationsFromServer);
+            const cuisinierFromServer = await fetchListeCuisinier();
+            setCuisiniers(cuisinierFromServer);
         };
     
         getReservations();
     }, []);
 
-    const setData = (serveur: ServeurType) => {
+    const setData = (cuisinier: CuisinierType) => {
         setPage(1);
+        setCuisinier(cuisinier)
     }
 
     useEffect(() => {
         const createTable = () => {
             let table = <></>;
-            for(var j = 0; j < serveurs.length; j++) {
-                const element = serveurs[j];
+            for(var j = 0; j < cuisiniers.length; j++) {
+                const element = cuisiniers[j];
                 const i = j + 1;
                 table = (
                     <>
                         {table}
-                        <div onClick={() => setData(element)}>{element.serveur_name}</div>
+                        <div onClick={() => setData(element)}>{element.name}</div>
                     </>
                 );
             };
             setTableauServeur(table);
         };
         createTable();
-    }, [serveurs]);
+    }, [cuisiniers]);
 
     
 

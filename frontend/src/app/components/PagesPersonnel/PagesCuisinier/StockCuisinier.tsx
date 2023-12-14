@@ -8,9 +8,10 @@ import { HeaderPages } from '../PagesComunes/HeaderPages';
 interface StockProps {
     page: number;
     setPage: (page: number) => void;
+    returnPage: number;
 }
 
-export const Stock = ({page, setPage}: StockProps) => {
+export const Stock = ({page, setPage, returnPage}: StockProps) => {
 
     const [stock, setStock] = useState<StockType[]>([]);
 
@@ -62,7 +63,7 @@ export const Stock = ({page, setPage}: StockProps) => {
 
     return (    
         <>
-            <HeaderPages page = {page} setPage = {setPage} title = "Stock" n_page={0}/>
+            <HeaderPages page = {page} setPage = {setPage} title = "Stock" n_page={returnPage}/>
             <div className='header_stock'>
                 <table className='list_stock'>
                     {tableau}

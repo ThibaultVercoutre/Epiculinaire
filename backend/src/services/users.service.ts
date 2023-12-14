@@ -1,5 +1,6 @@
 import { connexion } from "../../bdd/connect.js";
 import { User, IUser } from "../models/users.model.js";
+import { Personnel, IPersonnel } from "../models/personnel.model.js";
 import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
@@ -51,6 +52,28 @@ export async function getUser(name: string, password: string) {
                             }
                         });
                     }
+                }
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
+
+export async function getCuisiniers() {
+    try{
+        const db = await connexion();
+
+        return new Promise((resolve, reject) => {
+            db.all("SELECT * from personnel WHERE type = 4", [], (err: Error, rows: IPersonnel[]) => {
+                if (err) {
+                    db.close();
+                    reject(err);
+                } else {
+                    const cuisiniers = rows.map(row => new Personnel(row));
+                    db.close();
+                    resolve(cuisiniers);
                 }
             });
         });

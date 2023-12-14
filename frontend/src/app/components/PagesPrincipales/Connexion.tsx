@@ -57,7 +57,7 @@ export const Connexion = ({user, setUser}: ConnexionProps) => {
                     <input onKeyDown={handleKeyPress} onChange={handleInputChange} name="password" value={formData.password} type="password" id="password" placeholder="Entrez votre mot de passe" />
                 </div>
                 <div>
-                  <button onClick={handleRegister} className="connecter">Se connecter</button>
+                  <div onClick={handleRegister} className="connecter">Se connecter</div>
                 </div>
             </div>
           </div>

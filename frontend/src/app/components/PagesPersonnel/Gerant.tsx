@@ -8,7 +8,7 @@ import { User as UserType } from "../../types/User";
 
 import { Tables } from "./PagesGerant/Tables";
 import { TableauGerant } from "./PagesGerant/TableauGerant";
-import { Stock } from "./PagesGerant/Stock";
+import { Stock } from "./PagesGerant/StockGerant";
 import { Agenda } from "./PagesGerant/Agenda";
 import { Finances } from "./PagesGerant/Finances";
 import { SuiviPlats } from "./PagesGerant/SuiviPlats";
@@ -27,7 +27,7 @@ export const Gerant = ({user, setUser}: GerantProps) => {
       0: <TableauGerant page={page} setPage={setPage}/>,
       1: <Finances page={page} setPage={setPage} />,
       2: <SuiviPlats page={page} setPage={setPage} />,
-      3: <Stock page={page} setPage={setPage} />,
+      3: <Stock page={page} setPage={setPage} returnPage={0}/>,
       4: <Agenda page={page} setPage={setPage} />,
       5: <Tables page={page} setPage={setPage} />,
       6: <Historique page={page} setPage={setPage} />
