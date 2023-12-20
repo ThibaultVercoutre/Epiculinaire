@@ -4,27 +4,29 @@ body {
     
   }
 
-  .Reservation-link {
+.Reservation-link {
     margin-right: 2px;
     font-weight: bold;
     text-transform: uppercase;
-  }
+}
 
-  .Menu-link {
+.Menu-link {
     margin-right: 2px;
     font-weight: bold; 
     text-transform: uppercase; 
-  }
-  .Avis-link {
+}
+  
+.Avis-link {
     margin-right: 2px;
     font-weight: bold; 
     text-transform: uppercase; 
-  }
-  .Gestion-link {
+}
+
+.Gestion-link {
     margin-right: 2px;
     font-weight: bold; 
     text-transform: uppercase; 
-  }
+}
 
 .centered-container {
     text-align: center;
@@ -33,6 +35,13 @@ body {
     font-weight: bold;
     border: 20px solid rgba(46, 17, 11, 0.0); /* Updated border with opacity */
     display: flex;
+}
+
+@media screen and (max-width: 600px) {
+    .centered-container {
+        flex-direction: column;
+        font-size: 15px;
+    }
 }
 
 .centered-container .child{
@@ -75,7 +84,8 @@ body {
     color: #eee; /* Couleur du texte */
     font-weight: bold;
     background-color: #2e110b;
-  }
-  .ribbon label input {
+}
+
+.ribbon label input {
     margin-right: 20px;
-  }
+}

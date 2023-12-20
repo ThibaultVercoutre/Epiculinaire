@@ -11,6 +11,12 @@
     opacity: 0.5;   
 }
 
+@media screen and (max-width: 600px) {
+    .footer {
+        display: none;
+    }
+}
+
 .footer div {
     flex: 1;
     margin: 0;

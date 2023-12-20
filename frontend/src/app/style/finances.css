@@ -74,7 +74,7 @@
 .comptes .compte {
     display: flex;
     justify-content: space-between;
-    align-items: right;
+    align-items: flex-start; /* align-items: center; */
     margin: 10px;
 }
 

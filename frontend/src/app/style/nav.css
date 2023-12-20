@@ -1,6 +1,5 @@
 .ribbon-container {
     padding-top: 50px;
-    margin-right: 20px;
     border-radius: 10px 0 0 10px;
     width: 100vw;
     overflow: hidden;
@@ -8,9 +7,9 @@
     justify-content: space-between;
     align-items: center;
     height: 80px;
-  }
+}
 
-  .logo {
+.logo {
     width: 200px;
     height: 50px;
     background-color: rgba(46, 17, 11, 0.9);
@@ -18,24 +17,33 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-  }
+}
 
-  .ribbon {
+.ribbon-content {
+    margin: 0px 30px 0px 30px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.ribbon {
     background-color: rgba(46, 17, 11, 0.9);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 5px;
     color: #fff;
     border-radius: 20px;
     width: 50%;
-  }
+}
 
-  .ribbon div {
+.ribbon div {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
 .nav{
   flex: 1;
@@ -61,22 +69,22 @@
   align-items: center;
   padding: 5px;
     
-  }
+}
 
-  .message div {
+.message div {
     font-size: 28px;
     font-weight: bold;
     padding: 10px; 
     border-radius: 10px; 
     display: flex;
-    justify-content:center;
+    justify-content: center;
     border-radius: 20px;
     background-color: rgba(46, 17, 11, 0.9); 
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
-  }
+}
 
 .deconnexion{
   background-color: rgba(189, 173, 152, 0.61);
@@ -90,4 +98,13 @@
 
 .deconnexion:hover{
   background-color: #9F833B;
+}
+
+@media screen and (max-width: 600px) {
+  .ribbon {
+      width: 100%;
+  }
+  .logo {
+      width: 0px;
+  }
 }
