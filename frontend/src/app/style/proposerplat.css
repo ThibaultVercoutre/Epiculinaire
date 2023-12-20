@@ -1,0 +1,104 @@
+body{
+
+    font-weight:bold ;
+    font-size: 85%;
+
+}
+  
+.plus_moins {
+    display: flex;
+    
+    align-items: center;
+
+}
+
+.confirmer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+label {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+
+input {
+    margin-right: 10px;
+    width: 80%;
+}
+
+.input1{
+
+   
+  margin-right: 10px;
+  width: 70%;
+        
+
+}
+
+.input {
+    margin-right: 10px;
+    width: 28%;
+    
+}
+
+.bouton{
+    background-color: rgba(189, 173, 152, 0.61);
+    font-weight: bold;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+}
+
+.bouton:hover {
+    background-color: #9F833B;
+}
+
+.tableInput{    
+    background-color: rgba(132, 118, 101, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.ingredient{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(132, 118, 101, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+
+}
+  
+
+.nav_ingredients {
+    max-height: 200px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.nav_ingredients > input {
+    margin: 10px;
+}
+
+.confirm{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}

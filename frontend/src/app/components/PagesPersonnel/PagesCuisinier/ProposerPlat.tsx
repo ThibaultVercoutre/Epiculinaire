@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import { HeaderPages } from '../PagesComunes/HeaderPages';
 
+import "../../../style/proposerplat.css";
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
+
 interface ProposerPlatProps {
     page: number;
     setPage: (page: number) => void;
@@ -42,9 +45,7 @@ export const ProposerPlat = ({page, setPage, returnPage}: ProposerPlatProps) => 
                 input = (
                     <>
                         {input}
-                        <input className='input'> 
-
-                        </input>
+                        <input className='input'></input>
                     </>
                 );
             };
@@ -59,73 +60,35 @@ export const ProposerPlat = ({page, setPage, returnPage}: ProposerPlatProps) => 
 
         <>
             <HeaderPages page = {page} setPage = {setPage} title = "Proposer un Plat" n_page={returnPage}/>
-            <table>
+            <table className='tableInput'>
                 <tr>
-                    <td>
-                        <label htmlFor="nom">Nom du plat</label>
-                    </td>
-                    <td>
-                        <input type="text" id="nom" name="nom" />
-                    </td>
-                    <td>
-                        <label htmlFor="type">Type de plat</label>
-                    </td>
-                    <td>
-                        <input type="text" id="type" name="type" />
-                    </td>
-                    
-
+                    <td><label htmlFor="nom">Nom du plat</label></td>
+                    <td><input type="text" id="nom" name="nom" /></td>
+                    <td><label htmlFor="type">Type de plat</label></td>
+                    <td><input type="text" id="type" name="type" /></td>
                 </tr>
-
                 <tr>
-                    
-                    <td>
-                        <label htmlFor="prix">Prix</label>
-                    </td>
-                    <td>
-                        <input type="text" id="prix" name="prix" />
-                    </td>
-                    
-                
-                    <td>
-                        <label htmlFor="nom">Specialisation</label>
-                    </td>
-                    <td>
-                        <input type="text" id="nom" name="nom" />
-                    </td>
+                    <td><label htmlFor="prix">Prix</label></td>
+                    <td><input type="text" id="prix" name="prix" /></td>
+                    <td><label htmlFor="nom">Specialisation</label></td>
+                    <td><input type="text" id="nom" name="nom" /></td>
                 </tr>
             </table>
 
-            <div >
+            <div className='ingredient'>
                 <p>Ingredients</p>
                 <table>  
                     <tr >    
-                    
-                    <td className='plus_moins'>
-                        <input className='input1' type="text"   />
-
-                        <div  className="bouton" onClick={() => setItems(items + 1)}>
-                        +
-                        </div>
-
-                        <div  className="bouton" onClick={() => setItems(items - 1)}>
-                        -
-                        </div>
-                    </td>
-                    
+                        <td className='plus_moins'>
+                            <input className='input1' type="text"   />
+                            <div  className="bouton" onClick={() => setItems(items + 1)}><PlusOutlined /></div>
+                            <div  className="bouton" onClick={() => setItems(items - 1)}><MinusOutlined /></div>
+                        </td>
                     </tr>   
-
                 </table>
-                    
-
+                <div className="nav_ingredients">{input}</div>
             </div>
-
-            <div className="nav_ingredients">
-                {input}
-            </div>
-            <div className="bouton">
-                <div onClick={handleConfirm} >Confirmer</div>
-            </div>
+            <div className="bouton confirm"><div onClick={handleConfirm}>Confirmer</div></div>
 
         </>
 

@@ -17,3 +17,8 @@ export type Table = {
     ]
     _id: string;
 }
+
+export type SimpleTable = {
+    id: number;
+    name: string;
+}

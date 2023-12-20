@@ -12,5 +12,5 @@ export type PlatMenu = {
 export type PlatDetails = {
     id: number;
     nom: string;
-    ingredients: { nom: string; quantite: number }[];
+    commandes: { id: number, name: string; quantite: number }[];
 }

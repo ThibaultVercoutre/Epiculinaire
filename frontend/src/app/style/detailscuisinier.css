@@ -1,0 +1,45 @@
+.tablesT{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.tablesT > div{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.tablesT tr td {
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.tablesT tr{
+    border-radius: 10px;  
+    background-color: rgba(189, 173, 152, 0.8);
+    padding: 5px;
+    cursor: pointer;
+}
+
+.tablesT tr:nth-child(odd){
+    background-color: rgba(132, 118, 101, 0.8);   
+}
+
+.tablesT tbody tr:hover td{
+    background-color: #9F833B;
+}
+
+.tablesT thead tr td{
+    font-size: 30px;
+    padding: 10px 20px;
+    background-color: rgba(46, 17, 11, 0.9);  
+    cursor: default;
+}
+
+.tablesT tbody tr td{
+    font-size: 20px;
+}

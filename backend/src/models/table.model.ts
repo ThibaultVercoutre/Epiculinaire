@@ -23,6 +23,10 @@ const TableSchema: Schema = new Schema(
         type: Number,
         required: true,
     },
+    name: {
+        type: String,
+        required: true,
+    },
   }
 );
 
@@ -33,6 +37,7 @@ export interface IITable {
     x: number;
     y: number;
     rotation: number;
+    name: String;
 }
 
 export interface ITable extends Omit<IITable, "_id">, Document {}

@@ -1,42 +1,60 @@
 import React, { useEffect, useState } from 'react';
 
+import axios from 'axios';
+
 import { PlatDetails as PlatType } from '../../../types/Plat';
+import { SimpleTable as TableType } from '../../../types/Tables';
+import { IngredientDetails as IngredientType } from '../../../types/Ingredient';
 
 import { HeaderPages } from '../PagesComunes/HeaderPages';
 
-interface DetailsProps {
-    page: number;
-    setPage: (page: number) => void;
-    returnPage: number;
-}
+import '../../../style/detailscuisinier.css';
 
 interface DetailsProps {
     page: number;
     setPage: (page: number) => void;
     returnPage: number;
-}
-
-interface TableType {
-    id: number;
-    name: string;
 }
 
 export const Details = ({page, setPage, returnPage}: DetailsProps) => {
 
     const [tables, setTables] = useState<TableType[]>([]);
+    const [tableTables, setTableTables] = useState<JSX.Element>(<></>);
     const [selectedTable, setSelectedTable] = useState<TableType | null>(null);
     const [plats, setPlats] = useState<PlatType[]>([]);
+    const [tablePlats, setTablePlats] = useState<JSX.Element>(<></>);
+    const [selectedPlat, setSelectedPlat] = useState<Number | null>(null);
+    const [ingredients, setIngredients] = useState<IngredientType[]>([]);
+    const [tableIngredients, setTableIngredients] = useState<JSX.Element>(<></>);
     const [error, setError] = useState<string | null>(null);
 
+
+    const fetchTables = async (): Promise<any> => {
+        return (await axios.get(`http://localhost:5000/tables`)).data;
+    }
+
+    const fetchCommandes = async (id: number): Promise<any> => {
+        return (await axios.get(`http://localhost:5000/tablesdetailsR/${id}`)).data;
+    }
+
+    const fetchAliments = async (id: number): Promise<any> => {
+        return (await axios.get(`http://localhost:5000/aliments/${id}`)).data;
+    }
+
     useEffect(() => {
-        const fetchTables = async () => {
+        const getTables = async () => {
             try {
-                // Ajout de tables fictives pour tester l'affichage
-                const fakeTables: TableType[] = [
-                    { id: 1, name: 'Table 1' },
-                    { id: 2, name: 'Table 2' },
-                    { id: 3, name: 'Table 3' },
-                ];
+                const tablesFromServer = await fetchTables();
+
+                const fakeTables: TableType[] = [];
+
+                for(var i = 0; i < tablesFromServer.length; i++) {
+                    if(tablesFromServer[i].name != null) {
+                        fakeTables.push(
+                            {id: tablesFromServer[i].id, name: tablesFromServer[i].name}
+                        );
+                    }
+                }
 
                 setTables(fakeTables);
             } catch (error) {
@@ -45,64 +63,105 @@ export const Details = ({page, setPage, returnPage}: DetailsProps) => {
             }
         };
 
-        fetchTables();
+        getTables();
     }, []);
 
-    // Création de données fictives pour tester l'affichage
-    const fakePlats1: PlatType[] = [
-        {
-            id: 1,
-            nom: 'Plat 1',
-            ingredients: [
-                { nom: 'Tomate', quantite: 1 },
-                { nom: 'Oignon', quantite: 1 },
-                { nom: 'Nugget', quantite: 5 },
-            ],
-        },
-    ];
+    useEffect(() => {
+        if(true){
+            console.log('afficher type plat');
+            const createTable = () => {
+                let table = <></>;
+                for(var j = 0; j < tables.length; j++) {
+                    const element = tables[j];
+                    const i = j + 1;
+                    table = (
+                        <>
+                            {table}
+                            <tr onClick={() => handleTableClick(element)}><td>{element.name}</td></tr>
+                        </>
+                    );
+                }
+                setTableTables(table);
+            }
+            createTable();
+        }
+    }, [tables]);
 
-    const fakePlats2: PlatType[] = [
-        {
-            id: 2,
-            nom: 'Plat 2',
-            ingredients: [
-                { nom: 'Pomme de terre', quantite: 2 },
-                { nom: 'Fromage', quantite: 3 },
-                { nom: 'Bacon', quantite: 4 },
-            ],
-        },
-    ];
+    useEffect(() => {
+        const getCommandes = async () => {
+            try {
+                const reservationFromServer = await fetchCommandes(selectedTable?.id || 0);
+                setPlats(reservationFromServer);
+            } catch (error) {
+                setError("Une erreur s'est produite lors de la récupération des commandes.");
+                console.error("Erreur Axios :", error);
+            }
+        };
 
-    const fakePlats3: PlatType[] = [
-        {
-            id: 3,
-            nom: 'Plat 3',
-            ingredients: [
-                { nom: 'Saumon', quantite: 1 },
-                { nom: 'Asperge', quantite: 6 },
-                { nom: 'Citron', quantite: 2 },
-            ],
-        },
-    ];
+        getCommandes();
+    }, [selectedTable]);
+
+    useEffect(() => {
+        if(plats.length > 0){
+            setTableIngredients(<></>);
+            const createTable = () => {
+                let table = <></>;
+                for(var j = 0; j < plats[0].commandes.length; j++) {
+                    const element = plats[0].commandes[j];
+                    const i = j + 1;
+                    table = (
+                        <>
+                            {table}
+                            <tr onClick={() => handleCommandeClick(element.id)}><td>{element.name}</td></tr>
+                        </>
+                    );
+                }
+                setTablePlats(table);
+            }
+            createTable();
+        }
+    }, [plats]);
+
+    useEffect(() => {
+        const getAliments = async () => {
+            try {
+                const alimentsFromServer = await fetchAliments(Number(selectedPlat) || 0);
+                setIngredients(alimentsFromServer);
+            } catch (error) {
+                setError("Une erreur s'est produite lors de la récupération des aliments.");
+                console.error("Erreur Axios :", error);
+            }
+        };
+
+        getAliments();
+    }, [selectedPlat]);
+
+    useEffect(() => {
+        if(ingredients.length > 0){
+            const createTable = () => {
+                let table = <></>;
+                for(var j = 0; j < ingredients.length; j++) {
+                    const element = ingredients[j];
+                    const i = j + 1;
+                    table = (
+                        <>
+                            {table}
+                            <tr><td>{element.name_aliment}</td></tr>
+                        </>
+                    );
+                }
+                setTableIngredients(table);
+            }
+            createTable();
+        }
+    }, [ingredients]);
 
     const handleTableClick = async (table: TableType) => {
         setSelectedTable(table);
+    };
 
-        // Utilisez les données fictives en fonction de la table sélectionnée
-        switch (table.id) {
-            case 1:
-                setPlats(fakePlats1);
-                break;
-            case 2:
-                setPlats(fakePlats2);
-                break;
-            case 3:
-                setPlats(fakePlats3);
-                break;
-            default:
-                setPlats([]); // En cas de table inconnue
-                break;
-        }
+    const handleCommandeClick = async (id: number) => {
+        setSelectedPlat(id);
     };
 
     return (
@@ -111,37 +170,33 @@ export const Details = ({page, setPage, returnPage}: DetailsProps) => {
 
             {error && <p>{error}</p>}
 
-            <div style={{ display: 'flex' }}>
-                <div style={{ marginRight: '20px' }}>
-                    <h2>Liste des tables</h2>
-                    <ul>
-                        {tables.map((table) => (
-                            <li key={table.id} onClick={() => handleTableClick(table)}>
-                                {table.name} <p>1</p>
-                            </li>
-                        ))}
-                    </ul>
+            <div className='tablesT'>
+                <div className='Ttables'>
+                    <table>
+                    <thead><tr><td>Liste des tables</td></tr></thead>
+                        <tbody>
+                            {tableTables}
+                        </tbody>
+                    </table>
                 </div>
 
-                {selectedTable && (
-                    <div>
-                        <h2>Plats pour la table: {selectedTable.id} {selectedTable.name}</h2>
-                        <ul>
-                            {plats.map((plat) => (
-                                <li key={plat.id}>
-                                    Nom du plat : {plat.nom} <br />
-                                    Ingrédients :
-                                    {plat.ingredients.map((ingredient, index) => (
-                                        <span key={index}>
-                                            {index > 0 && ', '}
-                                            {ingredient.nom} ({ingredient.quantite})
-                                        </span>
-                                    ))}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+                <div className='Tcommandes'>
+                    <table>
+                    <thead><tr><td>Liste des commandes</td></tr></thead>
+                        <tbody>
+                            {tablePlats}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className='Tingredients'>
+                    <table>
+                    <thead><tr><td>Liste des ingredients</td></tr></thead>
+                        <tbody>
+                            {tableIngredients}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
     );

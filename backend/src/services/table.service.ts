@@ -8,7 +8,9 @@ export async function getTables() {
         console.log("db", db);
 
         return new Promise((resolve, reject) => {
-            const sql = "SELECT * FROM table_resto"
+            const sql = `SELECT tr.id as id, tr.taille as taille, tr.x as x, tr.y as y, tr.rotation as rotation, r.nom as name
+                        FROM table_resto tr
+                        LEFT JOIN reservation r ON tr.id = r.id_table`;
             db.all(sql, [], (err: Error, rows: ITable[]) => {
                 if (err) {
                     db.close();
@@ -32,7 +34,9 @@ export async function getTablesDetails() {
         console.log("db", db);
 
         return new Promise((resolve, reject) => {
-            const sql = "SELECT * FROM table_resto";
+            const sql = `SELECT tr.id as id, tr.taille as taille, tr.x as x, tr.y as y, tr.rotation as rotation, r.nom as name
+                        FROM table_resto tr
+                        LEFT JOIN reservation r ON tr.id = r.id_table`;
             db.all(sql, [], (err: Error, rows: any[]) => {
                 if (err) {
                     db.close();
@@ -47,6 +51,7 @@ export async function getTablesDetails() {
                             x: row.x as number,
                             y: row.y as number,
                             rotation: row.rotation as number,
+                            name: row.name as string,
                             _id: row._id as number,
                             commandes: []
                         });
