@@ -92,6 +92,7 @@ export const Details = ({page, setPage, returnPage}: DetailsProps) => {
             try {
                 const reservationFromServer = await fetchCommandes(selectedTable?.id || 0);
                 setPlats(reservationFromServer);
+                console.log(reservationFromServer);
             } catch (error) {
                 setError("Une erreur s'est produite lors de la récupération des commandes.");
                 console.error("Erreur Axios :", error);

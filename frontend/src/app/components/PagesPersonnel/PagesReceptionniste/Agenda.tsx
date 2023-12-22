@@ -71,6 +71,7 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
     useEffect(() => {
         const createTable = () => {
             let table = <></>;
+            console.log(reservations);
             reservations.forEach((element) => {
                 table = (
                     <>
@@ -78,7 +79,7 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
                         <tr>
                             <td className='name'>{element.nom}</td>
                             <td className='quantity'>{element.nb_personnes} personne(s)</td>
-                            <td className='date'>{element.date.split('T')[1].split('.')[0]}</td>
+                            <td className='date'>{element.date.split('T')[1].split('.')[0]}</td> 
                         </tr>
                     </>
                 );
@@ -97,9 +98,9 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
 
         const getReservations = async () => {
             const reservationsFromServer = await fetchReservation2(weekDatesArray[jour]);
-            reservationsFromServer.forEach((element: any) => {
-                element.date = new Date(element.date);
-            });
+            // reservationsFromServer.forEach((element: any) => {
+            //     element.date = new Date(element.date);
+            // });
             setReservations(reservationsFromServer);
         };
 

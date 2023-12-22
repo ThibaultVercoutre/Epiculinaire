@@ -5,6 +5,8 @@ import { Stock as StockType } from '../../../types/Stock';
 
 import { HeaderPages } from '../PagesComunes/HeaderPages';
 
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
+
 interface StockProps {
     page: number;
     setPage: (page: number) => void;
@@ -48,8 +50,10 @@ export const Stock = ({page, setPage, returnPage}: StockProps) => {
                     <>
                         {table}
                         <tr>
+                            <td className='minus'><MinusOutlined /></td>
                             <td className='name'>{element.name}</td>
                             <td className='quantity'>{element.quantity} {unite}</td>
+                            <td className='plus'><PlusOutlined /></td>
                         </tr>
                     </>
                 );

@@ -24,7 +24,7 @@ const ReservationSchema: Schema = new Schema(
         required: true,
     },
     date: {
-        type: Date,
+        type: String,
         required: true,
     },
   }
@@ -37,7 +37,7 @@ export interface IIReservation {
     id_Reservation: number;
     nom: string;
     mail: string;
-    date: Date;
+    date: String;
 }
 
 export interface IReservation extends Omit<IIReservation, "_id">, Document {}

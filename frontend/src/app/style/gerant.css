@@ -99,10 +99,10 @@ div.titre{
     transition-duration: 0.1s;
 }
 
-.header_stock tr td:first-child{
+.header_stock tr td.name{
     border-radius: 20px 0px 0px 20px;  
 }
 
-.header_stock tr td:last-child{
+.header_stock tr td.quantity{
     border-radius: 0px 20px 20px 0px;  
 }

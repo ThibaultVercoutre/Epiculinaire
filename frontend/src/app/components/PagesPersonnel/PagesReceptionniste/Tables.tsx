@@ -31,7 +31,7 @@ export const Tables = ({page, setPage}: TablesProps) => {
 
     return (    
         <>  
-            <HeaderPages page={page} setPage={setPage} title = "Tables"/>
+            <HeaderPages page={page} setPage={setPage} title = "Tables" n_page={0}/>
             <div className='map'>
                 <MapResto heightdiv={size.height} widthdiv={size.width} />
             </div>

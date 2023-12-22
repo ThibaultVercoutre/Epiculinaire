@@ -12,7 +12,7 @@ export const PlatAFaire = ({page, setPage, returnPage}: PlatAFaireProps) => {
 
     return (    
         <>
-            <HeaderPages page = {page} setPage = {setPage} title = "Détails" n_page={returnPage}/>
+            <HeaderPages page = {page} setPage = {setPage} title = "Plat à faire" n_page={returnPage}/>
         </> 
     )
 }

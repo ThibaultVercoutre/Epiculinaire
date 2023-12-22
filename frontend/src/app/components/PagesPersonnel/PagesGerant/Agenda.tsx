@@ -89,9 +89,9 @@ export const Agenda = ({page, setPage}: AgendaProps) => {
 
         const getReservations = async () => {
             const reservationsFromServer = await fetchReservation2(weekDatesArray[jour]);
-            reservationsFromServer.forEach((element: any) => {
-                element.date = new Date(element.date);
-            });
+            // reservationsFromServer.forEach((element: any) => {
+            //     element.date = new Date(element.date);
+            // });
             setReservations(reservationsFromServer);
         };
 

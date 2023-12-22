@@ -198,7 +198,7 @@ export async function getTablesDetailsIdR(id: number) {
                         tables.push(table);
                     });
                     const sql2 = `
-                        SELECT r.id_table as id_table, c.id as id_commande, c.heure, ec.Etat as etatString, p.name as name
+                        SELECT r.id_table as id_table, p.id as id_commande, c.heure, ec.Etat as etatString, p.name as name
                         FROM table_resto tr
                         LEFT JOIN reservation r ON tr.id = r.id_table
                         LEFT JOIN commande c ON r.id = c.id_reservation
